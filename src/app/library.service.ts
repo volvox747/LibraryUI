@@ -17,10 +17,6 @@ export class LibraryService
     {
         return this.http
         .get<BookSchema[]>("https://localhost:44309/books")
-        .pipe(map(response=>
-            {
-                this.books=response
-            }))
     }
 
     postData(userCredentials:{LoginEmail:string,Password:string})
@@ -31,6 +27,7 @@ export class LibraryService
             {
                 this.books=[];
                 this.books=res;
+                console.log(this.books);
             }))
     }
 };
