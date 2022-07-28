@@ -1,6 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map } from "rxjs";
+import { BookSchema } from "./models/book.model";
 
 // privides access to all components
 @Injectable({
@@ -9,13 +10,13 @@ import { map } from "rxjs";
 
 export class LibraryService 
 {
-    books:any=[]
+    books:BookSchema[];
     constructor(private http:HttpClient) { }
     
     getData()
     {
         return this.http
-        .get("https://localhost:44309/books")
+        .get<BookSchema[]>("https://localhost:44309/books")
         .pipe(map(response=>
             {
                 this.books=response
@@ -24,6 +25,12 @@ export class LibraryService
 
     postData(userCredentials:{LoginEmail:string,Password:string})
     {
-        return this.http.post('https://localhost:44309/login',userCredentials)
+        return this.http
+            .post<BookSchema[]>('https://localhost:44309/login',userCredentials)
+            .pipe(map(res=>
+            {
+                this.books=[];
+                this.books=res;
+            }))
     }
 };
