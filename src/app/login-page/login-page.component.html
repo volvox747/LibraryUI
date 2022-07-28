@@ -1,28 +1,45 @@
-<div class="container bg-primary">
-  <section class="">
-    <div class="row">
-      <div class="col">
-        <h3>User Login</h3>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
+<div class="container">
+  <div class="d-flex justify-content-center login-page">
+    
+    <div class="bg-secondary p-5">
+      <h4>User Login</h4>
+      
+      <form class="" (ngSubmit)="onSubmit(data)" #data="ngForm">
+        <div class="mb-3">
+            <label for="floatingInput" class="form-label">Email address</label>
+          <input type="email" class="form-control" name="userEmail" ngModel  placeholder="name@example.com" />
         </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
+        <div class="mb-3">
+            <label for="floatingPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" name="userPassword" ngModel
+            placeholder="Password" />
         </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary w-75">Sign In</button>
+        </div>
+        <div>New User? <a routerLink="/">Sign up</a></div>
+      </form>
     </div>
-    <div class="col">
-          <h3>Admin Login</h3>
-        <div class="form-floating mb-3">
-          <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-          <label for="floatingInput">Email address</label>
+
+
+
+    <div class="bg-info p-5">
+      <h4>Admin Login</h4>
+      <form>
+        <div class=" mb-3">
+            <label for="floatingInput" class="form-label">Email address</label>
+          <input type="email" class="form-control" name="adminEmail" ngModel 
+            placeholder="name@example.com" />
         </div>
-        <div class="form-floating">
-          <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-          <label for="floatingPassword">Password</label>
+        <div class="mb-3">
+            <label for="floatingPassword" class="form-label">Password</label>
+          <input type="password" class="form-control" name="adminPassword" ngModel
+            placeholder="Password" />
         </div>
-      </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary w-75">Sign In</button>
+        </div>
+      </form>
     </div>
-  </section>
+  </div>
 </div>
