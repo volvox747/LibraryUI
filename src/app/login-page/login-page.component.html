@@ -7,17 +7,17 @@
       <form class="" (ngSubmit)="onSubmit(data)" #data="ngForm">
         <div class="mb-3">
             <label for="floatingInput" class="form-label">Email address</label>
-          <input type="email" class="form-control" name="userEmail" ngModel  placeholder="name@example.com" />
+          <input type="email" class="form-control" name="LoginEmail" ngModel  placeholder="name@example.com" />
         </div>
         <div class="mb-3">
             <label for="floatingPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" name="userPassword" ngModel
+          <input type="password" class="form-control" name="LoginPassword" ngModel
             placeholder="Password" />
         </div>
         <div class="text-center">
           <button type="submit" class="btn btn-primary w-75">Sign In</button>
         </div>
-        <div>New User? <a routerLink="/">Sign up</a></div>
+        <div>New User? <a routerLink="/register">Sign up</a></div>
       </form>
     </div>
 

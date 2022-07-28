@@ -9,18 +9,21 @@ import { map } from "rxjs";
 
 export class LibraryService 
 {
-    private url="https://localhost:44345/api/department"
-    dept=[]
+    books:any=[]
     constructor(private http:HttpClient) { }
     
     getData()
     {
         return this.http
-        .get<{DepId:number,DeptName:string}[]>(this.url)
+        .get("https://localhost:44309/books")
         .pipe(map(response=>
             {
-                this.dept=response
-                return this.dept
+                this.books=response
             }))
+    }
+
+    postData(userCredentials:{LoginEmail:string,Password:string})
+    {
+        return this.http.post('https://localhost:44309/login',userCredentials)
     }
 };
