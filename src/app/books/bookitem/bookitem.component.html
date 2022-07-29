@@ -1,8 +1,8 @@
-<div class="col" routerLink="/register">
+<div class="col" routerLink="/books/{{book.bookId}}" (click)="onClickEvent(book)">
     <div class="card" style="max-width: 18rem;">
         <img [src]="book.bookImageUrl" class="card-img-top img-thumbnail" alt="{{book.bookName}}">
         <div class="card-body">
-            <h5 class="card-title">{{book.bookName}}</h5>
+            <h5 class="card-title">{{book.bookName}} ({{book.language}})</h5>
             <p class="card-text text-truncate text-break" style="max-width: 500px;">{{book.description}}</p>
         </div>
         <div class="card-footer">
