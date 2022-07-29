@@ -11,7 +11,6 @@ import { BookSchema } from '../models/book.model';
 })
 export class LoginPageComponent implements OnInit {
 
-  bookList:any
   constructor(private library:LibraryService,private router: Router) { }
 
   ngOnInit(): void {

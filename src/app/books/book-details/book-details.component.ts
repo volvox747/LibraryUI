@@ -22,4 +22,9 @@ export class BookDetailsComponent implements OnInit {
     })
   }
 
+  onRequest()
+  {
+    
+  }
+
 }
