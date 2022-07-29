@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map } from "rxjs";
+import { map, Subject } from "rxjs";
 import { BookSchema } from "./models/book.model";
 
 // privides access to all components
@@ -11,6 +11,7 @@ import { BookSchema } from "./models/book.model";
 export class LibraryService 
 {
     books:BookSchema[];
+    bookDetails=new Subject<BookSchema>();
     constructor(private http:HttpClient) { }
     
     getData()
