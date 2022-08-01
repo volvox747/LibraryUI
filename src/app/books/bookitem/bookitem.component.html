@@ -1,12 +1,12 @@
 <div class="col" routerLink="/books/{{book.bookId}}" (click)="onClickEvent(book)">
     <div class="card" style="max-width: 18rem;">
-        <img [src]="book.bookImageUrl" class="card-img-top img-thumbnail" alt="{{book.bookName}}">
+        <img [src]="book.bookImageUrl.trim()" class="card-img-top img-thumbnail" alt="{{book.bookName.trim()}}">
         <div class="card-body">
-            <h5 class="card-title">{{book.bookName}} ({{book.language}})</h5>
+            <h5 class="card-title">{{book.bookName.trim()}} ({{book.language}})</h5>
             <p class="card-text text-truncate text-break" style="max-width: 500px;">{{book.description}}</p>
         </div>
         <div class="card-footer">
-            <small class="text-muted">Writen By {{book.author}}</small>
+            <small class="text-muted">Writen By {{book.author.trim()}}</small>
         </div>
     </div>
 </div>

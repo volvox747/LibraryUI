@@ -3,14 +3,14 @@
       <h1>Action & Adventure</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
         <ng-container *ngFor="let book of booksData">
-            <app-bookitem *ngIf="book.category=='Action & Adventure'" [book]="book">
+            <app-bookitem *ngIf="book.category.trim()==='Action & Adventure'" [book]="book">
             </app-bookitem>
         </ng-container>
     </div>
     <h1>Classical</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
         <ng-container *ngFor="let book of booksData">
-            <app-bookitem *ngIf="book.category=='Classical'" [book]="book">
+            <app-bookitem *ngIf="book.category.trim()==='Classical'" [book]="book">
             </app-bookitem>
         </ng-container>
         
@@ -18,7 +18,7 @@
     <h1>Horror and Romance</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
         <ng-container *ngFor="let book of booksData">
-          <app-bookitem *ngIf="book.category=='Horror' || book.category=='Romance'" [book]="book">
+          <app-bookitem *ngIf="book.category.trim()==='Romance'" [book]="book">
           </app-bookitem>
         </ng-container>
     </div>

@@ -18,8 +18,7 @@ export class BooksComponent implements OnInit {
   {
     // console.log('From Login',this.booksData);
     // before intializing or displaying components in book page getting the data
-    this.library.getData().subscribe(res=>{this.booksData=res;console.log("Inside subscribe",this.booksData);
-    });
+    this.library.getData().subscribe(res=>this.booksData=res);
     // get the login data from services
     // this.loginData=this.library.loginData;
     // console.log('From Books',this.booksData);
