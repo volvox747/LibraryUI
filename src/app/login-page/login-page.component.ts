@@ -23,4 +23,12 @@ export class LoginPageComponent implements OnInit {
     })
   }
 
+  adminLogin(data:NgForm)
+  {
+    if(data.value.adminEmail==="admin@gmail.com" && data.value.adminPassword==="Admin@1")
+    {
+      this.router.navigateByUrl('/books')
+    }
+  }
+
 }
