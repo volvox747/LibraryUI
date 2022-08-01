@@ -1,7 +1,7 @@
 export interface BookSchema
 {
     author:string
-    bookId:number
+    bookId:string
     bookImageUrl:string
     bookName:string
     category:string

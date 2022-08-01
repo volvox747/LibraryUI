@@ -1,6 +1,6 @@
 export interface LoginSchema
 {
-    loginId:number
+    loginId:string
     loginName:string
     loginEmail:string
     phoneNumber:number

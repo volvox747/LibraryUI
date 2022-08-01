@@ -1,6 +1,6 @@
 export interface RegisterSchema
 {
-    id:string
+    regId:string
     regName:string
     regEmail:string
     phoneNumber:string
