@@ -1,1 +1,24 @@
-<p>register works!</p>
+<div class="container">
+    <form class="" (ngSubmit)="onRegister(data)" #data="ngForm">
+        <div class="mb-3">
+            <label for="floatingInput1" class="form-label">Name</label>
+          <input type="text" id="floatingInput1" class="form-control" name="regName" ngModel required />
+        </div>
+        <div class="mb-3">
+            <label for="floatingInput2" class="form-label">Email</label>
+            <input type="email" id="floatingInput2" class="form-control" name="regEmail" ngModel required/>
+        </div>
+        <div class="mb-3">
+            <label for="floatingInput3" class="form-label">Phone No.</label>
+          <input type="tel" id="floatingInput3" class="form-control" name="phoneNumber" ngModel required/>
+        </div>
+        <div class="mb-3">
+            <label for="floatingPassword1" class="form-label">Password</label>
+          <input type="password" id="floatingPassword1" class="form-control" name="password" ngModel required/>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary w-75">Register</button>
+        </div>
+        <div>Existing User? <a routerLink="/">Sign in</a></div>
+    </form>
+</div>
