@@ -3,6 +3,8 @@ import { Injectable } from "@angular/core";
 import { map, Subject } from "rxjs";
 import { BookSchema } from "./models/book.model";
 import { LoginSchema } from "./models/login.model";
+import { RegisterSchema } from "./models/register.model";
+import { RequestSchema } from "./models/request.model";
 
 // privides access to all components
 @Injectable({
@@ -22,11 +24,26 @@ export class LibraryService
         .get<BookSchema[]>("https://localhost:44309/books")
     }
 
+    // post the login data and receive its corresponding data
     postData(userCredentials:{LoginEmail:string,Password:string})
     {
         // post and get the login credentials
         return this.http
             .post<LoginSchema>('https://localhost:44309/login',userCredentials)
-            .pipe(map(res=>this.loginData=res))
+            .pipe(map(res=>this.loginData=res[0]))
+    }
+
+    // post the request of book along with loginId and get requested msg
+
+    postrequestBook(requestData:RequestSchema)
+    {
+        this.http
+            .post('https://localhost:44309/request-book',requestData)
+            .subscribe(res=>console.log(res))
+    }
+
+    postRegisterUser(data:RegisterSchema)
+    {
+        return this.http.post('https://localhost:44309/register',data)
     }
 };
