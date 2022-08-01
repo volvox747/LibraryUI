@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import { BooksComponent } from './books/books.component';
 import { BookitemComponent } from './books/bookitem/bookitem.component';
 import { BookDetailsComponent } from './books/book-details/book-details.component';
+import { AddbookComponent } from './addbook/addbook.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { BookDetailsComponent } from './books/book-details/book-details.componen
     RegisterComponent,
     BooksComponent,
     BookitemComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    AddbookComponent
   ],
   imports: [
     BrowserModule,
