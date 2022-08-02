@@ -16,6 +16,10 @@ export class LibraryService
     books:BookSchema[];
     loginData:LoginSchema;
     bookDetails=new Subject<BookSchema>();
+    adminDetail=new Subject<{adminName:string,adminEmail:string}>();
+    // to pass the login data to nav bar
+    userData=new Subject<LoginSchema>();
+    
     constructor(private http:HttpClient) { }
     
     getData()
