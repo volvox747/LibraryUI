@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from '../book.service';
 import { LibraryService } from '../library.service';
 import { BookSchema } from '../models/book.model';
 import { LoginSchema } from '../models/user.model';
@@ -12,11 +13,11 @@ export class BooksComponent implements OnInit {
 
   booksData:BookSchema[];
   loginData:LoginSchema;
-  constructor(private library:LibraryService) { }
+  constructor(private book:BookService) { }
 
   ngOnInit(): void 
   {
-    this.library.getData().subscribe(res=>this.booksData=res);
+    this.book.getData().subscribe(res=>this.booksData=res);
   }
 
 

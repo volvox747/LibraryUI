@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { BookService } from 'src/app/book.service';
 import { LibraryService } from 'src/app/library.service';
 import { BookSchema } from 'src/app/models/book.model';
 
@@ -10,7 +11,7 @@ import { BookSchema } from 'src/app/models/book.model';
 export class BookitemComponent implements OnInit {
 
   @Input() book:BookSchema
-  constructor(private library:LibraryService) { }
+  constructor(private bookservice:BookService) { }
 
   ngOnInit(): void {
   }
@@ -18,7 +19,7 @@ export class BookitemComponent implements OnInit {
   onClickEvent(bookData:BookSchema)
   {
     // passing data to details page via click event
-    this.library.bookDetails.next(bookData);
+    this.bookservice.bookDetails.next(bookData);
   }
 
 }

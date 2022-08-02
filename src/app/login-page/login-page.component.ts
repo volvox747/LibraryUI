@@ -22,7 +22,7 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit(data:NgForm)
   {
-    this.library.postData(data.value).subscribe((res)=>{
+    this.library.postData(data.value).subscribe((res)=>{   
       // passing data to navbar
       this.library.userData.next(res);
       this.router.navigate(['/books']);
@@ -32,12 +32,18 @@ export class LoginPageComponent implements OnInit {
   adminLogin(data:NgForm)
   {
     console.log(data.value);
-    
-    if(data.value.adminEmail==="admin@gmail.com" && data.value.adminPassword==="Admin@1")
+    if(this.library.admin(data.value))
     {
-      this.library.adminDetail.next({adminName:"Library Admin",adminEmail:"Library Email"});
-      this.router.navigateByUrl('/books')
+        this.router.navigate(['/books'])
     }
+    
+    // if(data.value.adminEmail==="admin@gmail.com" && data.value.adminPassword==="Admin@1")
+    // {
+    //   this.library.adminDetail.next({adminName:"Library Admin",adminEmail:"Library Email"});
+    //   this.library.adminDetail.next({adminName:"Library Admin",adminEmail:"Library Email"});
+    //   this.router.navigateByUrl('/books')
+    // }
+    
   }
 
 }
