@@ -1,9 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Subject } from "rxjs";
-// import { BookSchema } from "./models/book.model";
 import { LoginSchema } from "./models/user.model";
-// import { RequestSchema } from "./models/request.model";
 
 // privides access to all components
 @Injectable({
@@ -53,20 +51,5 @@ export class LibraryService
         return this.http.post('https://localhost:44309/register',data)
     }
     
-    // // Get All Books Details
-    // getData()
-    // {
-    //     return this.http
-    //     .get<BookSchema[]>("https://localhost:44309/books")
-    // }
-    
-    // // post the request of book along with loginId and get requested msg
-
-    // postrequestBook(requestData:RequestSchema)
-    // {
-    //     this.http
-    //         .post('https://localhost:44309/request-book',requestData)
-    //         .subscribe(res=>console.log(res))
-    // }
 
 };
