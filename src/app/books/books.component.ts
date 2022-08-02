@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LibraryService } from '../library.service';
 import { BookSchema } from '../models/book.model';
-import { LoginSchema } from '../models/login.model';
+import { LoginSchema } from '../models/user.model';
 
 @Component({
   selector: 'app-books',
@@ -16,13 +16,7 @@ export class BooksComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    // console.log('From Login',this.booksData);
-    // before intializing or displaying components in book page getting the data
     this.library.getData().subscribe(res=>this.booksData=res);
-    // get the login data from services
-    // this.loginData=this.library.loginData;
-    // console.log('From Books',this.booksData);
-    
   }
 
 
