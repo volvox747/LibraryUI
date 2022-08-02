@@ -1,7 +1,4 @@
-import { Component, DoCheck, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { LibraryService } from './library.service';
-import { LoginSchema } from './models/login.model';
-
+import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

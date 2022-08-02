@@ -6,12 +6,12 @@
       
       <form class="" (ngSubmit)="onSubmit(data)" #data="ngForm">
         <div class="mb-3">
-            <label for="floatingInput" class="form-label">Email address</label>
-          <input type="email" class="form-control" name="LoginEmail" ngModel  placeholder="name@example.com" />
+            <label for="userEmail" class="form-label">Email address</label>
+          <input type="email" id="userEmail" class="form-control" name="LoginEmail" ngModel  placeholder="name@example.com" />
         </div>
         <div class="mb-3">
-            <label for="floatingPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" name="LoginPassword" ngModel
+            <label for="userPassword" class="form-label">Password</label>
+          <input type="password" id="userPassword" class="form-control" name="LoginPassword" ngModel
             placeholder="Password" />
         </div>
         <div class="text-center">
@@ -25,15 +25,15 @@
 
     <div class="bg-info p-5">
       <h4>Admin Login</h4>
-      <form (submit)="adminLogin(data)" #data="ngForm">
+      <form (submit)="adminLogin(adminData)" #adminData="ngForm">
         <div class=" mb-3">
-            <label for="floatingaInput" class="form-label">Email address</label>
-          <input type="email" class="form-control" name="adminEmail" ngModel 
+            <label for="adminEmail" class="form-label">Email address</label>
+          <input type="email" id="adminEmail" class="form-control" name="adminEmail" ngModel 
             placeholder="name@example.com" />
         </div>
         <div class="mb-3">
-            <label for="floatingaPassword" class="form-label">Password</label>
-          <input type="password" class="form-control" name="adminPassword" ngModel
+            <label for="adminPassword" class="form-label">Password</label>
+          <input type="password" id="adminPassword" class="form-control" name="adminPassword" ngModel
             placeholder="Password" />
         </div>
         <div class="text-center">

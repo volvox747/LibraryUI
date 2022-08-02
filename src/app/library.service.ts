@@ -2,8 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { map, Subject } from "rxjs";
 import { BookSchema } from "./models/book.model";
-import { LoginSchema } from "./models/login.model";
-import { RegisterSchema } from "./models/register.model";
+import { LoginSchema } from "./models/user.model";
 import { RequestSchema } from "./models/request.model";
 
 // privides access to all components
@@ -46,7 +45,7 @@ export class LibraryService
             .subscribe(res=>console.log(res))
     }
 
-    postRegisterUser(data:RegisterSchema)
+    postRegisterUser(data:LoginSchema)
     {
         return this.http.post('https://localhost:44309/register',data)
     }

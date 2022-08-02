@@ -6,34 +6,83 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <!--! Admin Tabs -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="adminDetail.hasOwnProperty('adminName')">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link active" aria-current="page" href="/books">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/add-book">Add Book</a>
         </li>
       </ul>
-      <!-- <ul class="navbar-nav ms-auto" *ngIf="login.hasOwnProperty('loginId')">
-        <li class="nav-item dropdown mr-3">
-          <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user"></i> Welcome {{login.loginName}}
+
+      <!--? User Tabs -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="userDetail.hasOwnProperty('loginId')">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/books">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add-book">Requested Books</a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav ms-auto" *ngIf="adminDetail.hasOwnProperty('adminName')">
+        <li class="nav-item me-3">
+          <a  class="nav-link active">
+            <i class="fas fa-user"></i> Welcome {{adminDetail.adminName}}
           </a>
-          <div class="dropdown-menu">
-            <a href="#" class="dropdown-item">
+        </li>
+
+        <!--! Commented out due to some errors  -->
+        <!-- <li class="nav-item dropdown me-3">
+          <a href="#" class="nav-link dropdown-toggle active" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user"></i> Welcome {{adminDetail.adminName}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a routerLink="/register" class="dropdown-item">
               <i class="fas fa-user-circle"></i> Profile
             </a>
-            <a href="#" class="dropdown-item">
+            <a routerLink="/" class="dropdown-item">
               <i class="fas fa-cog"></i> Settings
             </a>
           </div>
-        </li>
+        </li> -->
+
         <li class="nav-item">
-          <a href="#" class="nav-link active">
+          <a routerLink="/" class="nav-link active">
             <i class="fas fa-user-times"></i> Logout
           </a>
         </li>
-      </ul> -->
+      </ul>
+
+      <ul class="navbar-nav ms-auto" *ngIf="userDetail.hasOwnProperty('loginId')">
+        <li class="nav-item me-3">
+          <a  class="nav-link active">
+            <i class="fas fa-user"></i> Welcome {{userDetail.loginName}}
+          </a>
+        </li>
+
+        <!--! Commented out due to some errors  -->
+        <!-- <li class="nav-item dropdown me-3">
+          <a href="#" class="nav-link dropdown-toggle active" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user"></i> Welcome {{userDetail.loginId}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a routerLink="/register" class="dropdown-item">
+              <i class="fas fa-user-circle"></i> Profile
+            </a>
+            <a routerLink="/" class="dropdown-item">
+              <i class="fas fa-cog"></i> Settings
+            </a>
+          </div>
+        </li> -->
+
+        <li class="nav-item">
+          <a routerLink="/" class="nav-link active">
+            <i class="fas fa-user-times"></i> Logout
+          </a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
