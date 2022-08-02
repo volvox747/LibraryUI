@@ -7,6 +7,7 @@ export interface BookSchema
     category:string
     description:string
     language:string
+    langId:string
     publishDate:string
     quantity:number
 };

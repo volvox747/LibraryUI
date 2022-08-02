@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BookService } from '../book.service';
+import { BookSchema } from '../models/book.model';
 
 @Component({
   selector: 'app-edit-book',
@@ -7,9 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditBookComponent implements OnInit {
 
-  constructor() { }
+  bookData:BookSchema
+  constructor(private book:BookService,private route:ActivatedRoute,private router:Router) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
+    // filter book from book details array using id
+    this.bookData=this.book.books.filter(book=>book.bookId===this.route.snapshot.params.bookId)[0];
+    console.log(this.bookData);
+    
+  }
+
+  onEditBook(data:NgForm)
+  {
+    data.value.bookId=this.bookData.bookId
+    this.book.updateBook(data.value).subscribe(res=>{
+      if(res==="Book Updated Successfully")
+      {
+        this.router.navigateByUrl(`/books/${this.route.snapshot.params.bookId}`)
+      }
+    });
   }
 
 }

@@ -18,6 +18,8 @@ export class BookitemComponent implements OnInit {
 
   onClickEvent(bookData:BookSchema)
   {
+    console.log('Hello');
+    
     // passing data to details page via click event
     this.bookservice.bookDetails.next(bookData);
   }

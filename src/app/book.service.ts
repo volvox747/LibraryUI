@@ -23,7 +23,7 @@ export class BookService {
   getData()
   {
       return this.http
-      .get<BookSchema[]>("https://localhost:44309/books")
+      .get<BookSchema[]>("https://localhost:44309/books").pipe(map(res=>this.books=res))
   }
   
   // post the request of book along with loginId and get requested msg
@@ -31,8 +31,15 @@ export class BookService {
   postrequestBook(requestData:RequestSchema)
   {
       this.http
-          .post('https://localhost:44309/request-book',requestData)
+          .post<string>('https://localhost:44309/request-book',requestData)
           .subscribe(res=>console.log(res))
+  }
+
+  // update book details
+  updateBook(updatedData:BookSchema)
+  {
+    return this.http
+        .put<string>("https://localhost:44309/update-book",updatedData)
   }
 
 }

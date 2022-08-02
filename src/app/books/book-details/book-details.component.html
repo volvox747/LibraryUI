@@ -1,1 +1,11 @@
-<button class="btn btn-danger" (click)="onRequest()">Request</button>
+<div *ngIf="adminName.length!==0">
+    <p>{{bookId}}</p>
+    <a class="btn btn-warning" routerLink="/books/{{bookId}}/update-book">Edit</a>
+</div>
+
+
+<div *ngIf="loginId.length!==0" >
+    <button class="btn btn-danger" (click)="onRequest()">Request</button>
+</div>
+
+
