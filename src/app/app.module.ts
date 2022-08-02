@@ -14,6 +14,7 @@ import { BookitemComponent } from './books/bookitem/bookitem.component';
 import { BookDetailsComponent } from './books/book-details/book-details.component';
 import { AddbookComponent } from './addbook/addbook.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { EditBookComponent } from './edit-book/edit-book.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomePageComponent } from './home-page/home-page.component';
     BookitemComponent,
     BookDetailsComponent,
     AddbookComponent,
-    HomePageComponent
+    HomePageComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,
