@@ -1,6 +1,7 @@
 <div *ngIf="adminName.length!==0">
     <p>{{bookId}}</p>
     <a class="btn btn-warning" routerLink="/books/{{bookId}}/update-book">Edit</a>
+    <a class="btn btn-danger" (click)="deleteBook()">Delete</a>
 </div>
 
 

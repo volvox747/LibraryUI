@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from 'src/app/book.service';
 import { LibraryService } from 'src/app/library.service';
 import { BookSchema } from 'src/app/models/book.model';
@@ -21,7 +21,7 @@ export class BookDetailsComponent implements OnInit {
   
   // ! Commented for asking doubt
  // requestBook:RequestSchema;
-  constructor(private library:LibraryService,private route:ActivatedRoute,private book :BookService) { }
+  constructor(private library:LibraryService,private route:ActivatedRoute,private book :BookService,private router:Router) { }
 
   ngOnInit(): void 
   {
@@ -77,6 +77,16 @@ export class BookDetailsComponent implements OnInit {
 
     // posting the loginId,bookId and receiveing the requested msg
     this.book.postrequestBook({reqId:uuidv4(),regId:this.library.loginData.loginId,bookId:this.bookId})
+  }
+
+  deleteBook()
+  {
+    this.book.deleteBook(this.bookId).subscribe(res=>{
+      if(res==="Book Deleted Successfully")
+      {
+        this.router.navigateByUrl('/books')
+      }
+    })
   }
 
 }

@@ -42,4 +42,9 @@ export class BookService {
         .put<string>("https://localhost:44309/update-book",updatedData)
   }
 
+  deleteBook(bookId:string)
+  {
+    return this.http.delete(`https://localhost:44309/delete-book/${bookId}`)
+  }
+
 }

@@ -18,7 +18,7 @@
     <h1>Horror and Romance</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
         <ng-container *ngFor="let book of booksData">
-          <app-bookitem *ngIf="book.category.trim()==='Romance'" [book]="book">
+          <app-bookitem *ngIf="book.category.trim()==='Romance' || book.category.trim()==='Horror'" [book]="book">
           </app-bookitem>
         </ng-container>
     </div>
