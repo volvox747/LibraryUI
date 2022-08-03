@@ -67,14 +67,6 @@ export class BookDetailsComponent implements OnInit {
 
   onRequest()
   {
-    // ! Commented for asking doubt
-    // get the loginId from services    
-    // this.requestBook['regId']=this.library.loginData.loginId; 
-    // // Generating requestId
-    // this.requestBook['reqId']=uuidv4();
-    // // fetching bookId from route params  
-    // this.requestBook['bookId']=this.route.snapshot.params.bookId
-
     // posting the loginId,bookId and receiveing the requested msg
     this.book.postrequestBook({reqId:uuidv4(),regId:this.library.loginData.loginId,bookId:this.bookId})
   }
