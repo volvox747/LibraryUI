@@ -25,6 +25,17 @@ export class BookService {
       return this.http
       .get<BookSchema[]>("https://localhost:44309/books").pipe(map(res=>this.books=res))
   }
+
+  getRequestBooksForAdmin()
+  {
+    return this.http.get("https://localhost:44309/request-books")
+  }
+
+
+  getRequestBooksForUser(loginId:string)
+  {
+    return this.http.get(`https://localhost:44309/request-books/${loginId}`)
+  }
   
   // post the request of book along with loginId and get requested msg
 
