@@ -13,7 +13,6 @@ import { BooksComponent } from './books/books.component';
 import { BookitemComponent } from './books/bookitem/bookitem.component';
 import { BookDetailsComponent } from './books/book-details/book-details.component';
 import { AddbookComponent } from './addbook/addbook.component';
-import { HomePageComponent } from './home-page/home-page.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { RequestbookComponent } from './requestbook/requestbook.component';
 
@@ -27,7 +26,6 @@ import { RequestbookComponent } from './requestbook/requestbook.component';
     BookitemComponent,
     BookDetailsComponent,
     AddbookComponent,
-    HomePageComponent,
     EditBookComponent,
     RequestbookComponent
   ],

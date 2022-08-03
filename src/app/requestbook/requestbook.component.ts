@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { LibraryService } from '../library.service';
+import { RequestBookSchema } from '../models/requestbook.model';
 
 @Component({
   selector: 'app-requestbook',
@@ -9,14 +10,14 @@ import { LibraryService } from '../library.service';
 })
 export class RequestbookComponent implements OnInit {
 
-  requests
   constructor(private library:LibraryService,private book:BookService) { }
+  requests:RequestBookSchema[]
 
   ngOnInit(): void 
   {
     if(this.library.adminName)
     {
-      this.book.getRequestBooksForAdmin().subscribe((res)=>{
+      this.book.getRequestBooksForAdmin().subscribe((res:RequestBookSchema[])=>{
         this.requests=res
         console.log(this.requests);
         

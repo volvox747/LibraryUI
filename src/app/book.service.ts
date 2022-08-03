@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BookSchema } from './models/book.model';
 import { RequestSchema } from "./models/request.model";
 import { map, Subject } from "rxjs";
+import { RequestBookSchema } from './models/requestbook.model';
 
 
 @Injectable({
@@ -34,16 +35,15 @@ export class BookService {
 
   getRequestBooksForUser(loginId:string)
   {
-    return this.http.get(`https://localhost:44309/request-books/${loginId}`)
+    return this.http.get<RequestBookSchema[]>(`https://localhost:44309/request-books/${loginId}`)
   }
   
   // post the request of book along with loginId and get requested msg
 
   postrequestBook(requestData:RequestSchema)
   {
-      this.http
+      return this.http
           .post<string>('https://localhost:44309/request-book',requestData)
-          .subscribe(res=>console.log(res))
   }
 
   // update book details

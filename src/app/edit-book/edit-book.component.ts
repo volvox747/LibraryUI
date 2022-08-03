@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../book.service';
 import { BookSchema } from '../models/book.model';
+import { UtilitiesService } from '../utilities.service';
 
 @Component({
   selector: 'app-edit-book',
@@ -12,7 +13,7 @@ import { BookSchema } from '../models/book.model';
 export class EditBookComponent implements OnInit {
 
   bookData:BookSchema
-  constructor(private book:BookService,private route:ActivatedRoute,private router:Router) { }
+  constructor(private book:BookService,private route:ActivatedRoute,private router:Router,private utilities:UtilitiesService) { }
 
   ngOnInit(): void 
   {
@@ -28,6 +29,7 @@ export class EditBookComponent implements OnInit {
     this.book.updateBook(data.value).subscribe(res=>{
       if(res==="Book Updated Successfully")
       {
+        this.utilities.showOnEdit.next(true)
         this.router.navigateByUrl(`/books/${this.route.snapshot.params.bookId}`)
       }
     });

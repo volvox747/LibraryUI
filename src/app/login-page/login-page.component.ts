@@ -37,12 +37,13 @@ export class LoginPageComponent implements OnInit {
         this.router.navigate(['/books'])
     }
     
-    // if(data.value.adminEmail==="admin@gmail.com" && data.value.adminPassword==="Admin@1")
-    // {
-    //   this.library.adminDetail.next({adminName:"Library Admin",adminEmail:"Library Email"});
-    //   this.library.adminDetail.next({adminName:"Library Admin",adminEmail:"Library Email"});
-    //   this.router.navigateByUrl('/books')
-    // }
+    // pass the admin data from adminDetail observable so that it can be received by the observer
+    // using subscribe method
+    if(data.value.adminEmail==="admin@gmail.com" && data.value.adminPassword==="Admin@1")
+    {
+      this.library.adminDetail.next({adminName:"Library Admin",adminEmail:"Library Email"});
+      this.router.navigateByUrl('/books')
+    }
     
   }
 
