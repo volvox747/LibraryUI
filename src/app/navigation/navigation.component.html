@@ -30,14 +30,7 @@
       </ul>
       
       <ul class="navbar-nav ms-auto" *ngIf="adminDetail.hasOwnProperty('adminName')">
-        <li class="nav-item me-3">
-          <a  class="nav-link active">
-            <i class="fas fa-user"></i> Welcome {{adminDetail.adminName}}
-          </a>
-        </li>
-
-        <!--! Commented out due to some errors  -->
-        <!-- <li class="nav-item dropdown me-3">
+        <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle active" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
             <i class="fas fa-user"></i> Welcome {{adminDetail.adminName}}
           </a>
@@ -46,44 +39,25 @@
               <i class="fas fa-user-circle"></i> Profile
             </a>
             <a routerLink="/" class="dropdown-item">
-              <i class="fas fa-cog"></i> Settings
+              <i class="fas fa-user-times"></i> Logout
             </a>
           </div>
-        </li> -->
-
-        <li class="nav-item">
-          <a routerLink="/" class="nav-link active">
-            <i class="fas fa-user-times"></i> Logout
-          </a>
         </li>
       </ul>
 
       <ul class="navbar-nav ms-auto" *ngIf="userDetail.hasOwnProperty('loginId')">
-        <li class="nav-item me-3">
-          <a  class="nav-link active">
-            <i class="fas fa-user"></i> Welcome {{userDetail.loginName}}
-          </a>
-        </li>
-
-        <!--! Commented out due to some errors  -->
-        <!-- <li class="nav-item dropdown me-3">
+        <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle active" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user"></i> Welcome {{userDetail.loginId}}
+            <i class="fas fa-user"></i> Welcome {{userDetail.loginName}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a routerLink="/register" class="dropdown-item">
               <i class="fas fa-user-circle"></i> Profile
             </a>
             <a routerLink="/" class="dropdown-item">
-              <i class="fas fa-cog"></i> Settings
+              <i class="fas fa-user-times"></i> Logout
             </a>
           </div>
-        </li> -->
-
-        <li class="nav-item">
-          <a routerLink="/" class="nav-link active">
-            <i class="fas fa-user-times"></i> Logout
-          </a>
         </li>
       </ul>
     </div>
