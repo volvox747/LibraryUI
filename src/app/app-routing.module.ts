@@ -6,14 +6,16 @@ import { BooksComponent } from './books/books.component';
 import { EditBookComponent } from './edit-book/edit-book.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterComponent } from './register/register.component';
+import { RequestbookComponent } from './requestbook/requestbook.component';
 
 const routes: Routes = [
   {path:'',component:LoginPageComponent},
   {path:'register',component:RegisterComponent},
   {path:'books',component:BooksComponent},
   {path:'books/:bookId',component:BookDetailsComponent},
-  {path:'add-book',component:AddbookComponent},
+  {path:'books/add-book',component:AddbookComponent},
   {path:'books/:bookId/update-book',component:EditBookComponent},
+  {path:'books/requests',component:RequestbookComponent}
 ];
 
 @NgModule({
