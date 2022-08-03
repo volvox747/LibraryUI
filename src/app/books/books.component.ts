@@ -3,6 +3,7 @@ import { BookService } from '../book.service';
 import { LibraryService } from '../library.service';
 import { BookSchema } from '../models/book.model';
 import { LoginSchema } from '../models/user.model';
+import { UtilitiesService } from '../utilities.service';
 
 @Component({
   selector: 'app-books',
@@ -11,9 +12,11 @@ import { LoginSchema } from '../models/user.model';
 })
 export class BooksComponent implements OnInit {
 
+  constructor(private book:BookService,private utilities:UtilitiesService) { }
   booksData:BookSchema[];
   loginData:LoginSchema;
-  constructor(private book:BookService) { }
+  showDelMsg:boolean=this.utilities.showOnDelete;
+  showAddMsg:boolean=this.utilities.showOnAdd;
 
   ngOnInit(): void 
   {

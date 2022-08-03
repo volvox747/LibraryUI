@@ -1,26 +1,45 @@
 <section class="py-5">
   <div class="container">
-      <h1>Action & Adventure</h1>
+    
+    <!--! Alert Message  -->
+    <div class="alert alert-dismissible fade show" [ngClass]="{
+        'alert-danger': showDelMsg,
+        'alert-success': showAddMsg
+      }" *ngIf="showDelMsg == true || showAddMsg == true" role="alert">
+      <div *ngIf="showDelMsg">Book Deleted Successfully</div>
+      <div *ngIf="showAddMsg">Book Added Successfully</div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+
+    <h1>Action & Adventure</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-        <ng-container *ngFor="let book of booksData">
-            <app-bookitem *ngIf="book.category.trim()==='Action & Adventure'" [book]="book">
-            </app-bookitem>
-        </ng-container>
+      <ng-container *ngFor="let book of booksData">
+        <app-bookitem *ngIf="book.category.trim() === 'Action & Adventure'" [book]="book">
+        </app-bookitem>
+      </ng-container>
     </div>
     <h1>Classical</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-        <ng-container *ngFor="let book of booksData">
-            <app-bookitem *ngIf="book.category.trim()==='Classical'" [book]="book">
-            </app-bookitem>
-        </ng-container>
-        
+      <ng-container *ngFor="let book of booksData">
+        <app-bookitem *ngIf="book.category.trim() === 'Classical'" [book]="book">
+        </app-bookitem>
+      </ng-container>
     </div>
     <h1>Horror and Romance</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-        <ng-container *ngFor="let book of booksData">
-          <app-bookitem *ngIf="book.category.trim()==='Romance' || book.category.trim()==='Horror'" [book]="book">
-          </app-bookitem>
-        </ng-container>
+      <ng-container *ngFor="let book of booksData">
+        <app-bookitem *ngIf="
+            book.category.trim() === 'Romance' ||
+            book.category.trim() === 'Horror'
+          " [book]="book">
+        </app-bookitem>
+      </ng-container>
+    </div>
+  </div>
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div class="p-3 align-items-center border-0 d-block" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex"></div>
     </div>
   </div>
 </section>
