@@ -28,40 +28,13 @@ export class BookDetailsComponent implements OnInit {
     bookId: string;
     reqId: string;
     adminName: string = '';
-    showEditedAlert:boolean;
+    showAlert:boolean;
 
 
-  ngOnInit(): void {
+  ngOnInit(): void 
+  {
     this.bookId = this.route.snapshot.params.bookId;
-
-    // ! Commented for asking doubt
-    // to pass the corresponding book data according to id to display the details of book
-    this.book.bookDetails.subscribe((bookDetail:BookSchema)=>
-    {
-      this.bookData=bookDetail
-    })
-
-    // if user logs in
-    if (this.library.loginData) {
-      this.loginId = this.library.loginData.loginId;
-      console.log(this.loginId);
-    }
-
-    // if admin logs in
-    if (this.library.adminName) {
-      this.adminName = this.library.adminName;
-    }
-
-    this.utilities.showOnEdit.subscribe((showOnEdit:boolean)=>this.showEditedAlert=showOnEdit)
-    
-    // ! Commented for asking doubt
-    // to receive the passed admin name from login component
-    // with this data we can display yhe edit,delete button using ngIf directive
-    this.library.adminDetail.subscribe(
-    (adminData:{adminName:string,adminEmail:string})=>
-    {
-      this.adminName=adminData.adminName;
-    })
+    this.helperFunction();
   }
 
   onRequest() {
@@ -73,8 +46,10 @@ export class BookDetailsComponent implements OnInit {
     }).subscribe(res=>{
       if(res==="Book Requested")
       {
-        this.showEditedAlert=false;
-        this.showEditedAlert=true;
+        this.showAlert=true;
+        setTimeout(() => {
+          this.showAlert=false
+        }, 2000);
       }
     });
   }
@@ -87,5 +62,43 @@ export class BookDetailsComponent implements OnInit {
         this.router.navigateByUrl('/books');
       }
     });
+  }
+
+  private helperFunction()
+  {
+    // getting book data from routerLink or navigate state
+
+    if(history.state.bookData)
+    {
+      this.bookData=history.state.bookData    
+    }
+    // data from edit book component
+    else if(history.state.editedBookData)
+    {
+      this.bookData=history.state.editedBookData    
+    }
+
+    // if user logs in
+    if (this.library.loginData) {
+      this.loginId = this.library.loginData.loginId;
+      console.log(this.loginId);
+    }
+
+    // if admin logs in
+    if (this.library.adminName) {
+      this.adminName = this.library.adminName;
+    }    
+
+    // to display the alert msg
+
+    if(history.state.data)
+    {
+      this.showAlert=history.state.data;
+      setTimeout(() => {
+        history.state.data=false
+        this.showAlert=history.state.data;
+      }, 2000);
+      console.log(this.showAlert,history.state.data);
+    }
   }
 }
