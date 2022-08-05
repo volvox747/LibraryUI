@@ -29,8 +29,7 @@ export class EditBookComponent implements OnInit {
     this.book.updateBook(data.value).subscribe(res=>{
       if(res==="Book Updated Successfully")
       {
-        this.utilities.showOnEdit.next(true)
-        this.router.navigateByUrl(`/books/${this.route.snapshot.params.bookId}`)
+        this.router.navigateByUrl(`/books/${this.route.snapshot.params.bookId}`,{state:{data:true,editedBookData:this.bookData}})
       }
     });
   }

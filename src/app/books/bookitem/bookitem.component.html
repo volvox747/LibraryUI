@@ -1,4 +1,4 @@
-<div class="col" routerLink="/books/{{book.bookId}}" (click)="onClickEvent(book)">
+<div class="col" routerLink="/books/{{book.bookId}}" [state]="{bookData:book}" (click)="onClickEvent(book)">
     <div class="card" style="max-width: 18rem;">
         <img [src]="book.bookImageUrl.trim()" class="card-img-top img-thumbnail" alt="{{book.bookName.trim()}}">
         <div class="card-body">
