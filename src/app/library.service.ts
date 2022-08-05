@@ -10,11 +10,10 @@ import { LoginSchema } from "./models/user.model";
 
 export class LibraryService 
 {
-    // books:BookSchema[];
-    // bookDetails=new Subject<BookSchema>();
     loginData:LoginSchema;
     adminName:string
     adminDetail=new Subject<{adminName:string,adminEmail:string}>();
+    
     // to pass the login data to nav bar
     userData=new Subject<LoginSchema>();
     
@@ -29,6 +28,8 @@ export class LibraryService
             .post<LoginSchema>('https://localhost:44309/login',userCredentials)
             .pipe(map(res=>this.loginData=res[0]))
     }
+
+
 
     // to check the admin Email and Password and pass the data
 
@@ -45,7 +46,7 @@ export class LibraryService
     }
     
     
-    
+    // passing registered data to the server
     postRegisterUser(data:LoginSchema)
     {
         return this.http.post('https://localhost:44309/register',data)
