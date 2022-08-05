@@ -15,12 +15,39 @@ export class BooksComponent implements OnInit {
   constructor(private book:BookService,private utilities:UtilitiesService) { }
   booksData:BookSchema[];
   loginData:LoginSchema;
-  showDelMsg:boolean=this.utilities.showOnDelete;
-  showAddMsg:boolean=this.utilities.showOnAdd;
-
+  showDelMsg:boolean
+  showAddMsg:boolean
+  
   ngOnInit(): void 
   {
+    // this function is to hide the display msgs
+    this.hideAlert()
     this.book.getData().subscribe(res=>this.booksData=res);
+  }
+  
+  private hideAlert()
+  {
+    this.showDelMsg=this.utilities.showOnDelete;
+    this.showAddMsg=this.utilities.showOnAdd;
+    // if delete alert is displayed, hide after 2 sec
+    if(this.utilities.showOnDelete)
+    {
+    setTimeout(() => {
+        this.utilities.showOnDelete=false
+        this.showDelMsg=this.utilities.showOnDelete;
+      }, 2000);    
+      console.log(this.showDelMsg,this.utilities.showOnDelete);
+    }
+    // if add alert is displayed, hide after 2 sec
+    if(this.utilities.showOnAdd)
+    {
+    setTimeout(() => {
+        this.utilities.showOnAdd=false
+        this.showAddMsg=this.utilities.showOnAdd
+      }, 2000);    
+      console.log(this.showAddMsg,this.utilities.showOnAdd);
+    }
+    
   }
 
 

@@ -5,9 +5,8 @@
     <div class="alert alert-dismissible fade show" [ngClass]="{
         'alert-danger': showDelMsg,
         'alert-success': showAddMsg
-      }" *ngIf="showDelMsg == true || showAddMsg == true" role="alert">
-      <div *ngIf="showDelMsg">Book Deleted Successfully</div>
-      <div *ngIf="showAddMsg">Book Added Successfully</div>
+      }" *ngIf="showDelMsg || showAddMsg" role="alert">
+      <div>{{showDelMsg?"Book Deleted Successfully":(showAddMsg?"Book Added Successfully":"")}}</div>
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 
@@ -35,11 +34,6 @@
           " [book]="book">
         </app-bookitem>
       </ng-container>
-    </div>
-  </div>
-  <div class="toast-container position-fixed top-0 end-0 p-3">
-    <div class="p-3 align-items-center border-0 d-block" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex"></div>
     </div>
   </div>
 </section>
