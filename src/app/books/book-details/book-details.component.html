@@ -1,14 +1,17 @@
 <section>
   <div class="container">
-    <div class="alert alert-dismissible fade show"
-      [ngClass]="{'alert-warning': showAlert && adminName.length!==0,'alert-primary':showAlert && loginId.length!==0}"
-      *ngIf="(showAlert && adminName.length!==0) ||  showAlert && loginId.length!==0" role="alert">
-    
-      <div>{{showAlert && adminName.length!==0? "Book Successfully Edited" : (showAlert && loginId.length!==0?"Book Requested Successfully":"")}}</div>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    
+    <!--! Dynamic Alert Message for edit and request -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div class="toast d-block msg align-items-center border-0" [ngClass]="{'text-bg-warning': showAlert && adminName.length!==0,'text-bg-info':showAlert && loginId.length!==0}" *ngIf="(showAlert && adminName.length!==0) ||  showAlert && loginId.length!==0" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            {{showAlert && adminName.length!==0? "Book Successfully Edited" : (showAlert && loginId.length!==0?"Book Requested Successfully":"")}}
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+            aria-label="Close"></button>
+        </div>
+      </div>
     </div>
-    
     
     <div class="row py-5">
       <div class="col-5">
@@ -26,7 +29,7 @@
         
         <!--* USER BUTTON  -->
         <div *ngIf="loginId.length!==0">
-          <button class="btn btn-danger" (click)="onRequest()">Request</button>
+          <button class="btn btn-primary" (click)="onRequest()">Request</button>
         </div>
       </div>
 
