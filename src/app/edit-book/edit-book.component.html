@@ -18,7 +18,7 @@
           <input type="url" name="bookImageUrl" class="form-control" id="inputBookImg" placeholder="https//:...." ngModel="{{bookData.bookImageUrl}}" required #url="ngModel">
           <p class="small text-danger" *ngIf="!url.valid && url.touched">Book Image Url Required</p>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <label for="inputYear" class="form-label">Publish Year</label>
           <input type="text" name="publishDate" class="form-control" id="inputYear" ngModel="{{bookData.publishDate}}" required #year="ngModel">
           <p class="small text-danger" *ngIf="!year.valid && year.touched">Year Required</p>
@@ -35,7 +35,7 @@
             <option value="Romance">Romance</option>
           </select>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <label for="inputLanguage" class="form-label">Language</label>
           <select id="inputLanguage" name="langId" class="form-select" ngModel="{{bookData.langId}}" [value]="bookData.language" required #language="ngModel">
             <p class="small text-danger" *ngIf="!language.valid && language.touched">Language Required</p>
@@ -59,7 +59,7 @@
           </div>
         </div>
         <div class="col-12">
-          <button type="submit" [disabled]="!editData.valid" class="btn btn-primary">Update</button>
+          <button type="submit" [disabled]="!editData.valid" class="btn btn-primary px-5">Update</button>
         </div>
       </form>
     </div>
