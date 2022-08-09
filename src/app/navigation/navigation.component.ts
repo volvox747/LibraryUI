@@ -27,4 +27,10 @@ export class NavigationComponent implements OnInit {
       }
     );
   }
+
+
+  logout()
+  {
+    this.library.logout();
+  }
 }
