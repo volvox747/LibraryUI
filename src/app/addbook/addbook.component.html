@@ -1,6 +1,19 @@
 <div class="container">
-  <div class="w-50 pt-5">
+    <!--! Dynamic Alert Message for edit and request -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div class="toast d-block msg align-items-center border-0 text-bg-danger"
+        *ngIf="errorMsg.flag" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            <p class="fs-5">Error : {{errorMsg.error.status}}</p>
+            <p class="fs-6 text-center">{{errorMsg.error.detail}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
 
+  <div class="w-50 pt-5">
     <h2>Add Book</h2>
     <form class="row g-3" (submit)="onAddBook(data)" #data="ngForm">
       <div class="col-md-6">
