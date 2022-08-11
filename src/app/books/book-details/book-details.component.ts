@@ -47,9 +47,9 @@ export class BookDetailsComponent implements OnInit
       bookId: this.bookId,
     }).subscribe(
       {
-        next: res =>
+        next: (res:any) =>
         {
-          if (res === "Book Requested")
+          if (res.value === "Book Requested")
           {
             this.showAlert = true;
             setTimeout(() => this.showAlert = false, 2000);
@@ -57,7 +57,6 @@ export class BookDetailsComponent implements OnInit
         },
         error: (err: HttpErrorResponse) =>
         {
-          console.log(err.error);
           // the function is below
           this.errorAlertDislay(err);
         }
@@ -68,9 +67,9 @@ export class BookDetailsComponent implements OnInit
   {
     this.book.deleteBook(this.bookId).subscribe(
       {
-        next: (res) =>
+        next: (res:any) =>
         {
-          if (res === 'Book Deleted Successfully')
+          if (res.value === 'Book Deleted Successfully')
           {
             this.utilities.showOnAdd = false;
             this.utilities.showOnDelete = true;
@@ -79,7 +78,6 @@ export class BookDetailsComponent implements OnInit
         },
         error: (err: HttpErrorResponse) =>
         {
-          console.log(err.error);
           // the function is below
           this.errorAlertDislay(err);
         }

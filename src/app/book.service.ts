@@ -19,15 +19,15 @@ export class BookService
   {
     return this.http
       .get<BookSchema[]>('https://localhost:44309/books')
-      .pipe(map((res) => (this.books = res)))
-      .pipe(catchError((err) => throwError(() => new Error(err))));
+      .pipe(map((res) => (this.books = res))
+      ,catchError((err:HttpErrorResponse) => throwError(() => err)));
   }
 
   getRequestBooksForAdmin()
   {
     return this.http
       .get<RequestBookSchema[]>('https://localhost:44309/request-books')
-      .pipe(catchError((err) => throwError(() => new Error(err))));
+      .pipe(catchError((err) => throwError(() => err)));
   }
 
   getRequestBooksForUser(loginId: string)
@@ -36,7 +36,7 @@ export class BookService
       .get<RequestBookSchema[]>(
         `https://localhost:44309/request-books/${loginId}`
       )
-      .pipe(catchError((err) => throwError(() => new Error(err))));
+      .pipe(catchError((err) => throwError(() => err)));
   }
 
   // post the request of book along with loginId and get requested msg
@@ -45,13 +45,7 @@ export class BookService
   {
     return this.http
       .post<string>('https://localhost:44309/request-book', requestData)
-      .pipe(
-        catchError((err: HttpErrorResponse) =>
-        {
-          console.log(err);
-          return throwError(() => err);
-        })
-      );
+      .pipe(catchError((err: HttpErrorResponse) => throwError(() => err)));
   }
 
   // add a new book into the database
@@ -60,13 +54,7 @@ export class BookService
   {
     return this.http
       .post('https://localhost:44309/add-book', bookData)
-      .pipe(
-        catchError((err: HttpErrorResponse) =>
-        {
-          console.log(err.status);
-          return throwError(() => err);
-        })
-      );
+      .pipe(catchError((err: HttpErrorResponse) => throwError(() => err)));
   }
 
   // update book details in the database
@@ -74,13 +62,7 @@ export class BookService
   {
     return this.http
       .put<string>('https://localhost:44309/update-book', updatedData)
-      .pipe(
-        catchError((err:HttpErrorResponse) =>
-        {
-          console.log(err);
-          return throwError(() => err);
-        })
-      );
+      .pipe(catchError((err:HttpErrorResponse) => throwError(() => err)));
   }
 
   // deleting a book from the database
@@ -88,13 +70,6 @@ export class BookService
   {
     return this.http
       .delete(`https://localhost:44309/delete-book/${bookId}`)
-      .pipe(
-        tap((res) => console.log(res)),
-        catchError((err:HttpErrorResponse) =>
-        {
-          console.log(err);
-          return throwError(() => err);
-        })
-      );
+      .pipe(tap((res) => console.log(res)),catchError((err:HttpErrorResponse) => throwError(() => err)));
   }
 }

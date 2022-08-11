@@ -30,11 +30,9 @@ export class AddbookComponent implements OnInit
 
     this.book.postAddBook(data.value).subscribe(
       {
-        next: (res) =>
+        next: (res:any) =>
         {
-          console.log(res);
-
-          if (res === "Book Added Successfully") 
+          if (res.value === "Book Added Successfully") 
           {
             // since we are binding both delete as well as add contents on same page. we need to disable delete
             // and enable add so that the data wont be overlapped with existing data.
@@ -45,7 +43,6 @@ export class AddbookComponent implements OnInit
         },
         error: (err: HttpErrorResponse) =>
         {
-          console.log(err.error);
           this.errorAlertDisplay(err)
         }
       })

@@ -32,18 +32,15 @@ export class EditBookComponent implements OnInit
     
     this.book.updateBook(data.value).subscribe(
       {
-        next: (res) =>
+        next: (res:any) =>
         {
-          console.log(res);
-
-          if (res === "Book Updated Successfully")
+          if (res.value === "Book Updated Successfully")
           {
             this.router.navigateByUrl(`/books/${this.route.snapshot.params.bookId}`, {state: {data: true, editedBookData: this.bookData}})
           }
         },
         error: (err:HttpErrorResponse) =>
         {
-          console.log(err.error);
           this.errorAlertDisplay(err)
         }
       });
