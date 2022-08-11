@@ -33,14 +33,6 @@ export class RequestbookComponent implements OnInit {
         
       })
 
-      //! Commnetd for asking doubt
-    // this.library.userData.subscribe(loginData=>{
-    //   console.log(loginData);
-      
-    //   if(loginData)
-    //     this.requests=loginData;
-    // })
-
     }
   }
 
