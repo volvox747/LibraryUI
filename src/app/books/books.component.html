@@ -1,26 +1,46 @@
 <section class="py-5">
   <div class="container">
-      <h1>Action & Adventure</h1>
+
+    <!--! Alert Message  -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div class="toast d-block msg align-items-center border-0" [ngClass]="{
+      'text-bg-danger': showDelMsg,
+      'text-bg-success': showAddMsg
+    }" *ngIf="showDelMsg || showAddMsg" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            {{showDelMsg?"Book Deleted Successfully":(showAddMsg?"Book Added Successfully":"")}}
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+            aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+
+
+    <h1>Action & Adventure</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-        <ng-container *ngFor="let book of booksData">
-            <app-bookitem *ngIf="book.category=='Action & Adventure'" [book]="book">
-            </app-bookitem>
-        </ng-container>
+      <ng-container *ngFor="let book of booksData">
+        <app-bookitem *ngIf="book.category.trim() === 'Action & Adventure'" [book]="book">
+        </app-bookitem>
+      </ng-container>
     </div>
     <h1>Classical</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-        <ng-container *ngFor="let book of booksData">
-            <app-bookitem *ngIf="book.category=='Classical'" [book]="book">
-            </app-bookitem>
-        </ng-container>
-        
+      <ng-container *ngFor="let book of booksData">
+        <app-bookitem *ngIf="book.category.trim() === 'Classical'" [book]="book">
+        </app-bookitem>
+      </ng-container>
     </div>
     <h1>Horror and Romance</h1>
     <div class="row row-cols-1 row-cols-md-3 g-4 py-5">
-        <ng-container *ngFor="let book of booksData">
-          <app-bookitem *ngIf="book.category=='Horror' || book.category=='Romance'" [book]="book">
-          </app-bookitem>
-        </ng-container>
+      <ng-container *ngFor="let book of booksData">
+        <app-bookitem *ngIf="
+            book.category.trim() === 'Romance' ||
+            book.category.trim() === 'Horror'
+          " [book]="book">
+        </app-bookitem>
+      </ng-container>
     </div>
   </div>
 </section>

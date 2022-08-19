@@ -1,12 +1,13 @@
 export interface BookSchema
 {
     author:string
-    bookId:number
+    bookId:string
     bookImageUrl:string
     bookName:string
     category:string
     description:string
     language:string
+    langId:string
     publishDate:string
     quantity:number
 };

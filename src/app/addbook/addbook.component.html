@@ -1,0 +1,88 @@
+<div class="container">
+    <!--! Dynamic Alert Message for edit and request -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div class="toast d-block msg align-items-center border-0 text-bg-danger"
+        *ngIf="errorMsg.flag" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            <p class="fs-5">Error : {{errorMsg.error.status}}</p>
+            <p class="fs-6 text-center">{{errorMsg.error.detail}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="w-50 pt-5">
+    <h2>Add Book</h2>
+    <form class="row g-3" (submit)="onAddBook(data)" #data="ngForm">
+      <div class="col-md-6">
+        <label for="inputBookName4" class="form-label">Book Name</label>
+        <input type="text" name="bookName" class="form-control" #bookName="ngModel" id="inputBookName4" ngModel
+          required>
+        <p *ngIf="!bookName.valid && bookName.touched" class="small text-danger"> Book Name required</p>
+      </div>
+      <div class="col-md-6">
+        <label for="inputAuthor4" class="form-label">Author Name</label>
+        <input type="text" name="author" class="form-control" #author="ngModel" id="inputAuthor4" ngModel required>
+        <p *ngIf="!author.valid && author.touched" class="small text-danger"> Author Name required</p>
+      </div>
+      <div class="col-12">
+        <label for="inputBookImg" class="form-label">Book Image Url</label>
+        <input type="url" name="bookImageUrl" #bookImageUrl="ngModel" class="form-control" id="inputBookImg"
+          placeholder="https//:...." ngModel required>
+        <p *ngIf="!bookImageUrl.valid && bookImageUrl.touched" class="small text-danger"> Please provide image for
+          identification</p>
+      </div>
+      <div class="col-md-3">
+        <label for="inputYear" class="form-label">Publish Year</label>
+        <input type="text" name="publishDate" #publishDate="ngModel" class="form-control" id="inputYear" ngModel
+          required>
+        <p *ngIf="!publishDate.valid && publishDate.touched" class="small text-danger"> Year Required</p>
+      </div>
+      <div class="col-md-4">
+        <label for="inputCategory" class="form-label">Category</label>
+        <select id="inputCategory" name="category" class="form-select" #category="ngModel" ngModel required>
+          <option>Classical</option>
+          <option>Horror</option>
+          <option>Comedy</option>
+          <option>Sci-fi</option>
+          <option>Action & Adventure</option>
+          <option>Romance</option>
+        </select>
+        <p *ngIf="!category.valid && category.touched" class="small text-danger"> Choose Category</p>
+      </div>
+      <div class="col-md-3">
+        <label for="inputLanguage" class="form-label">Language</label>
+        <select id="inputLanguage" name="langId" #lang="ngModel" class="form-select" ngModel required>
+          <option value="1">English</option>
+          <option value="5">Hindi</option>
+          <option value="2">French</option>
+          <option value="4">German</option>
+          <option value="3">Italian</option>
+        </select>
+        <p *ngIf="!lang.valid && lang.touched" class="small text-danger">Choose Language</p>
+      </div>
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">Quantity</label>
+        <input type="text" name="quantity" #quantity="ngModel" class="form-control" id="inputZip" ngModel required>
+        <p *ngIf="!quantity.valid && quantity.touched" class="small text-danger"> Quantity required</p>
+      </div>
+      <div class="col-12">
+        <div class="mb-3">
+          <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+          <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" ngModel
+            #description="ngModel" required [minlength]="10"></textarea>
+          <p class="small"
+            [ngClass]="{'text-danger':!description.valid && description.touched && description.value.length<10,'text-muted':!description.touched && description.value.length===0}">
+            Description must be more that 10 characters</p>
+          <p *ngIf="!description.valid && description.touched && description.value.length===0"
+            class="small text-danger"> Description required</p>
+        </div>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary px-5" [disabled]="!data.valid">Add Book</button>
+      </div>
+    </form>
+  </div>
+</div>
