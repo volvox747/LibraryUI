@@ -45,6 +45,7 @@ export class BookDetailsComponent implements OnInit
       reqId: uuidv4(),
       regId: this.library.loginData.loginId,
       bookId: this.bookId,
+      status:"pending"
     }).subscribe(
       {
         next: (res:any) =>

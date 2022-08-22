@@ -24,7 +24,6 @@ export class LoginPageComponent implements OnInit
 
   onSubmit(data: NgForm)
   {
-    console.log(data);
     this.library.postData(data.value).subscribe(
       {
         next: (res) => 

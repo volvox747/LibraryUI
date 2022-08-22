@@ -17,6 +17,7 @@ import { EditBookComponent } from './edit-book/edit-book.component';
 import { RequestbookComponent } from './requestbook/requestbook.component';
 import { ModalComponent } from './modal/modal.component';
 import { TokenInterceptor } from './auth-intercepter.service';
+import { BookModule } from './book.module';
 
 @NgModule({
   declarations: [
@@ -24,19 +25,20 @@ import { TokenInterceptor } from './auth-intercepter.service';
     NavigationComponent,
     LoginPageComponent,
     RegisterComponent,
-    BooksComponent,
-    BookitemComponent,
-    BookDetailsComponent,
-    AddbookComponent,
-    EditBookComponent,
-    RequestbookComponent,
+    // BooksComponent,
+    // BookitemComponent,
+    // BookDetailsComponent,
+    // AddbookComponent,
+    // EditBookComponent,
+    // RequestbookComponent,
     ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BookModule
   ],
   providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
   bootstrap: [AppComponent]

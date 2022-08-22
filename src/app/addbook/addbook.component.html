@@ -1,5 +1,5 @@
 <div class="container">
-    <!--! Dynamic Alert Message for edit and request -->
+    <!--! Dynamic Alert Message for error -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
       <div class="toast d-block msg align-items-center border-0 text-bg-danger"
         *ngIf="errorMsg.flag" role="alert" aria-live="assertive"
@@ -45,8 +45,6 @@
         <select id="inputCategory" name="category" class="form-select" #category="ngModel" ngModel required>
           <option>Classical</option>
           <option>Horror</option>
-          <option>Comedy</option>
-          <option>Sci-fi</option>
           <option>Action & Adventure</option>
           <option>Romance</option>
         </select>

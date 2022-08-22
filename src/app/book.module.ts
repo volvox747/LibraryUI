@@ -1,7 +1,7 @@
 import {CommonModule} from "@angular/common";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {RouterModule} from "@angular/router";
+import { FormsModule } from "@angular/forms";
+import { RouterModule } from "@angular/router";
 import {AddbookComponent} from "./addbook/addbook.component";
 import {BookRoutingModule} from "./book-routing.module";
 import {BookDetailsComponent} from "./books/book-details/book-details.component";

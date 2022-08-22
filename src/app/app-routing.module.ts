@@ -12,11 +12,11 @@ import { RouteAuth } from './route-auth.service';
 const routes: Routes = [
   {path:'',component:LoginPageComponent},
   {path:'register',component:RegisterComponent},
-  {path:'books', canActivate:[RouteAuth], component:BooksComponent},
-  {path:'books/add-book', canActivate:[RouteAuth], component:AddbookComponent},
-  {path:'books/:bookId', canActivate:[RouteAuth], component:BookDetailsComponent},
-  {path:'books/:bookId/update-book', canActivate:[RouteAuth], component:EditBookComponent},
-  {path:'requests', canActivate:[RouteAuth], component:RequestbookComponent}
+  // {path:'books', canActivate:[RouteAuth], component:BooksComponent},
+  // {path:'books/add-book', canActivate:[RouteAuth], component:AddbookComponent},
+  // {path:'books/:bookId', canActivate:[RouteAuth], component:BookDetailsComponent},
+  // {path:'books/:bookId/update-book', canActivate:[RouteAuth], component:EditBookComponent},
+  // {path:'requests', canActivate:[RouteAuth], component:RequestbookComponent}
 ];
 
 @NgModule({

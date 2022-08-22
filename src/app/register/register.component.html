@@ -1,25 +1,41 @@
 <div class="container">
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div class="toast d-block msg align-items-center border-0 text-bg-danger"
+      *ngIf="errorMsg.flag" role="alert" aria-live="assertive"
+      aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          <p class="fs-5">Error : {{errorMsg.error.status}}</p>
+          <p class="fs-6 text-center">{{errorMsg.error.detail}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
   <div class="w-50 pt-5">
     <h2>Add Member</h2>
     <form class="pt-3" (ngSubmit)="onRegister(data)" #data="ngForm">
       <div class="mb-3">
         <label for="floatingInput2" class="form-label">Name</label>
-        <input type="text" id="floatingInput2" class="form-control" name="loginName" ngModel required />
+        <input type="text" id="floatingInput2" class="form-control" #loginName="ngModel" required ngModel />
+        <p *ngIf="!loginName.valid && loginName.touched" class="small text-danger"> Name required</p>
       </div>
       <div class="mb-3">
         <label for="floatingInput1" class="form-label">Email</label>
-        <input type="email" id="floatingInput1" class="form-control" name="loginEmail" ngModel required />
+        <input type="email" id="floatingInput1" class="form-control" #loginEmail="ngModel" required ngModel />
+        <p *ngIf="!loginEmail.valid && loginEmail.touched" class="small text-danger"> Email required</p>
       </div>
       <div class="mb-3">
         <label for="floatingInput3" class="form-label">Phone No.</label>
-        <input type="tel" id="floatingInput3" class="form-control" name="phoneNumber" ngModel required />
+        <input type="tel" id="floatingInput3" class="form-control" #phoneNumber="ngModel" required ngModel />
+        <p *ngIf="!phoneNumber.valid && phoneNumber.touched" class="small text-danger"> Phone Number required</p>
       </div>
       <div class="mb-4">
         <label for="floatingPassword1" class="form-label">Password</label>
-        <input type="password" id="floatingPassword1" class="form-control" name="password" ngModel required />
+        <input type="password" id="floatingPassword1" class="form-control" #password="ngModel" required ngModel />
+        <p *ngIf="!password.valid && password.touched" class="small text-danger"> Password required</p>
       </div>
       <div class="">
-        <button type="submit" class="btn btn-primary w-25">Register</button>
+        <button type="submit" class="btn btn-primary w-25" [disabled]="!data.valid">Register</button>
       </div>
     </form>
   </div>

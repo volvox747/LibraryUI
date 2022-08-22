@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { from } from 'rxjs';
 import { LibraryService } from '../library.service';
 import {v4 as uuidv4} from 'uuid'
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  errorMsg: {flag: boolean, error: {}} = {flag: false, error: {}}
 
   onRegister(data:NgForm)
   {

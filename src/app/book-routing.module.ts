@@ -9,10 +9,10 @@ import {RouteAuth} from "./route-auth.service";
 
 
 const bookRoutes: Routes = [
-    {path: '', canActivate: [RouteAuth], component: BooksComponent},
-    {path: '/add-book', canActivate: [RouteAuth], component: AddbookComponent},
-    {path: '/:bookId', canActivate: [RouteAuth], component: BookDetailsComponent},
-    {path: '/:bookId/update-book', canActivate: [RouteAuth], component: EditBookComponent},
+    {path: 'books', canActivate: [RouteAuth], component: BooksComponent},
+    {path: 'books/add-book', canActivate: [RouteAuth], component: AddbookComponent},
+    {path: 'books/:bookId', canActivate: [RouteAuth], component: BookDetailsComponent},
+    {path: 'books/:bookId/update-book', canActivate: [RouteAuth], component: EditBookComponent},
     {path: 'requests', canActivate: [RouteAuth], component: RequestbookComponent}
 ]
 

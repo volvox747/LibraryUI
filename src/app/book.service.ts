@@ -19,7 +19,7 @@ export class BookService
   {
     return this.http
       .get<BookSchema[]>('https://localhost:44309/books')
-      .pipe(map((res) => (this.books = res))
+      .pipe(map((res:BookSchema[]) => (this.books = res))
       ,catchError((err:HttpErrorResponse) => throwError(() => err)));
   }
 
