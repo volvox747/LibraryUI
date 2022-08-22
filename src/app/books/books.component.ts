@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { BookService } from '../book.service';
 import { LibraryService } from '../library.service';
@@ -17,12 +18,18 @@ export class BooksComponent implements OnInit {
   loginData:LoginSchema;
   showDelMsg:boolean
   showAddMsg:boolean
+  errorMsg:{}
   
   ngOnInit(): void 
   {
     // this function is to hide the display msgs
     this.hideAlert()
-    this.book.getData().subscribe(res=>this.booksData=res);
+    this.book.getData().subscribe(
+      {
+        next:(res:BookSchema[])=>this.booksData=res,
+        error:(err:HttpErrorResponse)=>this.errorMsg=err
+      }
+    );
   }
   
   private hideAlert()
