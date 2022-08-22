@@ -1,13 +1,20 @@
 <section class="py-5">
   <div class="container">
-    
+
     <!--! Alert Message  -->
-    <div class="alert alert-dismissible fade show" [ngClass]="{
-        'alert-danger': showDelMsg,
-        'alert-success': showAddMsg
-      }" *ngIf="showDelMsg || showAddMsg" role="alert">
-      <div>{{showDelMsg?"Book Deleted Successfully":(showAddMsg?"Book Added Successfully":"")}}</div>
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+      <div class="toast d-block msg align-items-center border-0" [ngClass]="{
+      'text-bg-danger': showDelMsg,
+      'text-bg-success': showAddMsg
+    }" *ngIf="showDelMsg || showAddMsg" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+          <div class="toast-body">
+            {{showDelMsg?"Book Deleted Successfully":(showAddMsg?"Book Added Successfully":"")}}
+          </div>
+          <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+            aria-label="Close"></button>
+        </div>
+      </div>
     </div>
 
 
