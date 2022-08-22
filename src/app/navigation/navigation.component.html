@@ -1,18 +1,68 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <div class="container">
-      <a class="navbar-brand" href="#">Library</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-        </ul>
-      </div>
+  <div class="container">
+    <a class="navbar-brand" href="#">Library</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!--! Admin Tabs -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="adminDetail.hasOwnProperty('adminName')">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/books">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="books/add-book">Add Book</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/requests">Requested Books</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register">Add Member</a>
+        </li>
+      </ul>
+
+      <!--? User Tabs -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="userDetail.hasOwnProperty('loginId')">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/books">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/requests">My Requests</a>
+        </li>
+      </ul>
+      
+      <ul class="navbar-nav ms-auto" *ngIf="adminDetail.hasOwnProperty('adminName')">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle active" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user"></i> Welcome {{adminDetail.adminName}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a routerLink="/register" class="dropdown-item">
+              <i class="fas fa-user-circle"></i> Profile
+            </a>
+            <a href="/" (click)="logout()" class="dropdown-item">
+              <i class="fas fa-user-times"></i> Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto" *ngIf="userDetail.hasOwnProperty('loginId')">
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle active" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-user"></i> Welcome {{userDetail.loginName}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a routerLink="/register" class="dropdown-item">
+              <i class="fas fa-user-circle"></i> Profile
+            </a>
+            <a href="/" (click)="logout()" class="dropdown-item">
+              <i class="fas fa-user-times"></i> Logout
+            </a>
+          </div>
+        </li>
+      </ul>
     </div>
+  </div>
 </nav>

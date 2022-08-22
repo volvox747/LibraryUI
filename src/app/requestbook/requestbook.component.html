@@ -1,0 +1,34 @@
+<section class="py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <h2>Requested Books</h2>
+            <div class="col pt-3">
+                <table class="table table-bordered table-success table-striped border-info">
+                    <thead>
+                        <tr>
+                            <th scope="col">Book Image</th>
+                            <th scope="col">Book Name</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Language</th>
+                            <th scope="col">User Email</th>
+                            <th scope="col">User Ph No.</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let request of requests">
+                        <tr class="fs-6">
+                            <td>
+                                <img [src]="request.bookImageUrl.trim()" class="card-img-top img-thumbnail"
+                                    alt="{{request.bookName.trim()}}">
+                            </td>
+                            <td>{{request.bookName}}</td>
+                            <td>{{request.category}}</td>
+                            <td>{{request.language}}</td>
+                            <td>{{request.loginEmail}}</td>
+                            <td>{{request.phoneNumber}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
