@@ -11,4 +11,5 @@ export interface RequestBookSchema
     loginId :string
     loginEmail :string
     phoneNumber :string
+    status:string
 }
