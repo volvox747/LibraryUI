@@ -9,13 +9,6 @@ import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterComponent } from './register/register.component';
-import { BooksComponent } from './books/books.component';
-import { BookitemComponent } from './books/bookitem/bookitem.component';
-import { BookDetailsComponent } from './books/book-details/book-details.component';
-import { AddbookComponent } from './addbook/addbook.component';
-import { EditBookComponent } from './edit-book/edit-book.component';
-import { RequestbookComponent } from './requestbook/requestbook.component';
-import { ModalComponent } from './modal/modal.component';
 import { TokenInterceptor } from './auth-intercepter.service';
 import { BookModule } from './book.module';
 
@@ -31,7 +24,7 @@ import { BookModule } from './book.module';
     // AddbookComponent,
     // EditBookComponent,
     // RequestbookComponent,
-    ModalComponent
+
   ],
   imports: [
     BrowserModule,
@@ -40,7 +33,8 @@ import { BookModule } from './book.module';
     FormsModule,
     BookModule
   ],
-  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
+  //! commented out due to some error
+  // providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
