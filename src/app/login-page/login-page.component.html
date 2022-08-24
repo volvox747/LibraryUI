@@ -3,7 +3,7 @@
     
     <div class="bg-warning bg-gradient login-form-padding">
       <h4>User Login</h4>
-      <p class="text-danger" *ngIf="errorFlag && data.value">Email or password incorrect.</p>
+      <p class="text-danger" *ngIf="userErrorFlag">Email or password incorrect.</p>
       <form class="" (ngSubmit)="onSubmit(data)" #data="ngForm">
         <div class="mb-3">
             <label for="userEmail" class="form-label">Email address</label>
@@ -24,16 +24,16 @@
 
     <div class="bg-primary text-white login-form-padding">
       <h4>Admin Login</h4>
-      <p class="text-danger" *ngIf="errorFlag && adminData.value">Email or password incorrect.</p>
+      <p class="text-danger" *ngIf="adminErrorFlag">Email or password incorrect.</p>
       <form (submit)="adminLogin(adminData)" #adminData="ngForm">
         <div class=" mb-3">
             <label for="adminEmail" class="form-label">Email address</label>
-          <input type="email" id="adminEmail" class="form-control" name="adminEmail" ngModel 
+          <input type="email" id="adminEmail" class="form-control" name="adminName" ngModel 
             placeholder="name@example.com" required email/>
         </div>
         <div class="mb-3">
             <label for="adminPassword" class="form-label">Password</label>
-          <input type="password" id="adminPassword" class="form-control" name="adminPassword" ngModel
+          <input type="password" id="adminPassword" class="form-control" name="password" ngModel
             placeholder="Password" required minlength="6"/>
         </div>
         <div class="text-center">

@@ -33,8 +33,7 @@ import { BookModule } from './book.module';
     FormsModule,
     BookModule
   ],
-  //! commented out due to some error
-  // providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,10 @@
 import {CommonModule} from "@angular/common";
+import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import {NgModule} from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { RouterModule } from "@angular/router";
 import {AddbookComponent} from "./addbook/addbook.component";
+import { TokenInterceptor } from "./auth-intercepter.service";
 import {BookRoutingModule} from "./book-routing.module";
 import {BookDetailsComponent} from "./books/book-details/book-details.component";
 import {BookitemComponent} from "./books/bookitem/bookitem.component";
@@ -24,7 +26,8 @@ import {RequestbookComponent} from "./requestbook/requestbook.component";
         FormsModule,
         BookRoutingModule,
         RouterModule
-    ] 
+    ],
+    providers: [{provide:HTTP_INTERCEPTORS,useClass:TokenInterceptor,multi:true}], 
 
     // Note:
         // We dont have to use exports as the components are loaded via routing module.

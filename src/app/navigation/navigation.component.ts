@@ -16,7 +16,9 @@ export class NavigationComponent implements OnInit {
   {
     // to pass admin data
     this.library.adminDetail.subscribe(
-      (adminData: { adminName: string; adminEmail: string }) => {
+      (adminData) => {
+        console.log(adminData);
+        
         this.adminDetail = adminData;
       }
     );

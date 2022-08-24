@@ -14,7 +14,8 @@ export class RouteAuth implements CanActivate {
     
     canActivate(route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean 
     {
-        if(this.library.loginData || this.library.adminName)
+        // if((this.library.loginData || this.library.adminName))
+        if(localStorage.getItem('jwt') || localStorage.getItem('adminToken'))
         {
             return true
         }

@@ -3,17 +3,21 @@ import { Observable } from "rxjs";
 
 export class TokenInterceptor implements HttpInterceptor
 {
-    private readonly token:string
-
+    
+    private token:string
     constructor()
     {
-        this.token=localStorage.getItem('jwt')
     }
-
+    
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        if(localStorage.getItem('jwt'))
+            this.token=localStorage.getItem('jwt')
+        if(localStorage.getItem('adminToken'))
+            this.token=localStorage.getItem('adminToken');
+        
         if(this.token)
         {
-            const headerRequest=req.clone({setHeaders:{"Authorize":this.token}});
+            const headerRequest=req.clone({setHeaders:{"Authorization":this.token}});
             return next.handle(headerRequest);
         }
         return next.handle(req)

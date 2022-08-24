@@ -21,10 +21,13 @@ export class RegisterComponent implements OnInit {
   onRegister(data:NgForm)
   {
     data.value.loginId=uuidv4()
-    this.library.postRegisterUser(data.value).subscribe((res:any)=>{
+    this.library.postRegisterUser(data.value).subscribe((res:any)=>
+    {
+      console.log(res);
+      
       if(res.value==="Successfully Registered")
       {        
-        this.library.userData.next(data.value);
+        // this.library.userData.next(data.value);
         this.router.navigateByUrl('/books');
       }
     })

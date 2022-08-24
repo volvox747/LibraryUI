@@ -28,7 +28,7 @@ export class BookDetailsComponent implements OnInit
   loginId: string = '';
   bookId: string;
   reqId: string;
-  adminName: string = '';
+  adminToken: string
   showAlert: boolean;
   errorMsg: {flag: boolean, error: {}} = {flag: false, error: {}}
 
@@ -115,9 +115,9 @@ export class BookDetailsComponent implements OnInit
     }
 
     // if admin logs in
-    if (this.library.adminName)
+    if (localStorage.getItem('adminToken'))
     {
-      this.adminName = this.library.adminName;
+      this.adminToken = localStorage.getItem('adminToken');
     }
 
     // to display the alert msg

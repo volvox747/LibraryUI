@@ -15,7 +15,7 @@
                 <th scope="col">User Email</th>
                 <th scope="col">User Ph No.</th>
                 <th scope *ngIf="loginData">Status</th>
-                <th scope *ngIf="admin">Actions</th>
+                <th scope *ngIf="adminToken">Actions</th>
               </tr>
             </thead>
               <tbody *ngFor="let request of requests">
@@ -30,7 +30,7 @@
                   <td>{{request.loginEmail}}</td>
                   <td>{{request.phoneNumber}}</td>
                   <td *ngIf="loginData">{{request.status}}</td>
-                  <td *ngIf="admin">
+                  <td *ngIf="adminToken">
                     <div class="d-flex justify-content-evenly">
                       <div class="btn btn-sm btn-success">Approve</div>
                       <div class="btn btn-sm btn-danger">Decline</div>
@@ -54,4 +54,3 @@
     </div>
   </div>
 </section>
-<script src="https://kit.fontawesome.com/9354833fb0.js" crossorigin="anonymous"></script>

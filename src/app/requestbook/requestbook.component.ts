@@ -15,24 +15,22 @@ export class RequestbookComponent implements OnInit
   constructor(private library: LibraryService, private book: BookService) { }
   requests: RequestBookSchema[];
   errorMsg:{};
-  admin: string;
+  adminToken: string;
   loginData: LoginSchema;
 
   ngOnInit(): void
   {
-    if (this.library.adminName)
+    if (localStorage.getItem('adminToken'))
     {
-      this.admin = this.library.adminName;
+      this.adminToken = localStorage.getItem('adminToken');
       this.book.getRequestBooksForAdmin().subscribe({
         next: (res: RequestBookSchema[]) =>
         {
           this.requests = res;
-          console.log(this.requests);
         },
         error:(err:HttpErrorResponse)=>
         {
           this.errorMsg=err;
-          console.log(this.errorMsg);
         }
       });
     }

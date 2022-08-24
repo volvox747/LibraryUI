@@ -1,4 +1,4 @@
-import {HttpErrorResponse} from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
@@ -16,7 +16,8 @@ export class LoginPageComponent implements OnInit
 {
   constructor(private library: LibraryService, private router: Router) { }
 
-  errorFlag: boolean // to display the error msg
+  adminErrorFlag: boolean // to display the error msg
+  userErrorFlag: boolean // to display the error msg
 
   ngOnInit(): void
   {
@@ -32,15 +33,15 @@ export class LoginPageComponent implements OnInit
           // [since nav bar is static at app component which is the root the data passed from the
           // login form wil be received by app component why because data through subjects can be passed to components 
           // of same URL]      
-          this.errorFlag = false
+          this.userErrorFlag = false
           this.library.userData.next(res);
           const token: string = res.token.token
           localStorage.setItem('jwt', token); // set to local storage
           this.router.navigate(['/books']);
         },
-        error: (error:HttpErrorResponse) => 
+        error: (error: HttpErrorResponse) => 
         {
-          this.errorFlag = true
+          this.userErrorFlag = true
           console.log(error.error.detail);
         }
 
@@ -49,20 +50,46 @@ export class LoginPageComponent implements OnInit
 
 
 
-adminLogin(data: NgForm) {
-  try
+  adminLogin(data: NgForm) 
   {
-    if (this.library.admin(data.value))
-    {
-      return this.router.navigate(['/books'])
-    }
-    throw new Error("Passowrd")
-  }
-  catch (error)
-  {
-    this.errorFlag = true
-  }
+    this.library.admin(data.value).subscribe(
+      {
+        next: (res:any) => 
+        {
+          console.log(res);
+          
+          // passing data to navbar
+          // [since nav bar is static at app component which is the root the data passed from the
+          // login form wil be received by app component why because data through subjects can be passed to components 
+          // of same URL]      
+          this.adminErrorFlag = false
+          const token: string = res.token.token
+          localStorage.setItem('adminToken', token); // set to local storage
+          this.library.adminDetail.next(res)
+          this.router.navigate(['/books']);
+        },
+        error: (error: HttpErrorResponse) => 
+        {
+          this.adminErrorFlag = true
+          console.log(error.error.detail);
+        }
+      }
+    )
 
-}
+    // try
+    // {
+    //   if (this.library.admin(data.value))
+    //   {
+    //     localStorage.setItem('adminToken',JSON.stringify(data.value));
+    //     return this.router.navigate(['/books'])
+    //   }
+    //   throw new Error("Passowrd")
+    // }
+    // catch (error)
+    // {
+    //   this.errorFlag = true
+    // }
+
+  }
 
 }
