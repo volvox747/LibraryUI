@@ -4,6 +4,5 @@ export interface LoginSchema
     loginName:string
     loginEmail:string
     phoneNumber:number
-    loginPassword:string
     token:string
 }
