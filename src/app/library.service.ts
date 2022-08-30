@@ -28,57 +28,50 @@ export class LibraryService
         return this.http
             .post<LoginSchema>('https://localhost:44309/login', userCredentials)
             .pipe(map(res => this.loginData = res[0])
-            ,catchError((err: HttpErrorResponse) =>
-            {
-                return throwError(() => err)
-            }))
+            ,catchError((err: HttpErrorResponse) => throwError(() => err)))
     }
 
 
 
     // to check the admin Email and Password and pass the data
-
     admin(admin: { adminEmail: string, adminPassword: string })
     {
         return this.http
             .post('https://localhost:44309/adminlogin',admin)
-            .pipe(catchError((err: HttpErrorResponse) =>
-            {
-                return throwError(() => err)
-            }))
-
-        // if (admin.adminEmail === "admin@gmail.com" && admin.adminPassword === "Admin@1")
-        // {
-        //     // used for displaying buttons in book-details component
-        //     this.adminName = "Library Admin";
-        //     localStorage.setItem('adminToken',this.adminName);
-        //     this.adminDetail.next({ adminName: this.adminName, adminEmail: "Library Email" });
-        //     return true
-        // }
-        // return false
+            .pipe(catchError((err: HttpErrorResponse) => throwError(() => err)))
     }
 
 
     // passing registered data to the server
     postRegisterUser(data: LoginSchema)
-    {
-        const headers=new HttpHeaders()
-        headers.set('Content-Type','application/json')
-        headers.set("Control-Allow-Origin", "*")
-        // sending email
-        this.http.post('https://formspree.io/f/xlevdeva',
-            {Email:data.loginEmail,Password:data.loginPassword},
-            {'headers':headers}).subscribe(res=>console.log(res)
-            );
-        
-        return this.http.post('https://localhost:44309/register', data)
+    {       
+        return this.http
+            .post('https://localhost:44309/register', data)
+            .pipe(catchError((err: HttpErrorResponse) => throwError(() => err)))
     }
-
+    // get the user data
+    getUserData(userId:string)
+    {
+        return this.http
+            .get(`https://localhost:44309/userdetails/${userId}`)
+            .pipe(catchError((err: HttpErrorResponse) => throwError(() => err)))
+    }
+    
+    // get the admin data
+    getAdminData(adminId:string)
+    {
+        return this.http.get(`https://localhost:44309/admindetails/${adminId}`)
+        .pipe(catchError((err: HttpErrorResponse) => throwError(() => err)))
+    }
 
     logout()
     {
         if(localStorage.getItem('jwt'))
-           return localStorage.removeItem('jwt');
+        {
+            localStorage.removeItem('userId');
+            return localStorage.removeItem('jwt');
+        }
+        localStorage.removeItem('adminId');
         return localStorage.removeItem('adminToken');
     }
 

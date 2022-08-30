@@ -7,7 +7,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!--! Admin Tabs -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="adminDetail.hasOwnProperty('adminName')">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="adminDetail">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/books">Home</a>
         </li>
@@ -23,7 +23,7 @@
       </ul>
 
       <!--? User Tabs -->
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="userDetail.hasOwnProperty('loginId')">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0" *ngIf="userDetail">
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" routerLink="/books">Home</a>
         </li>
@@ -32,10 +32,10 @@
         </li>
       </ul>
       
-      <ul class="navbar-nav ms-auto" *ngIf="adminDetail.hasOwnProperty('adminName')">
+      <ul class="navbar-nav ms-auto" *ngIf="adminDetail">
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle active" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user"></i> Welcome {{adminDetail.adminName}}
+            <i class="fas fa-user"></i> Welcome {{adminDetail}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a routerLink="/register" class="dropdown-item">
@@ -48,10 +48,10 @@
         </li>
       </ul>
 
-      <ul class="navbar-nav ms-auto" *ngIf="userDetail.hasOwnProperty('loginId')">
+      <ul class="navbar-nav ms-auto" *ngIf="userDetail">
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle active" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fas fa-user"></i> Welcome {{userDetail.loginName}}
+            <i class="fas fa-user"></i> Welcome {{userDetail}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a routerLink="/register" class="dropdown-item">

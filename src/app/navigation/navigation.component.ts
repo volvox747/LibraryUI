@@ -7,27 +7,29 @@ import { LoginSchema } from '../models/user.model';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css'],
 })
-export class NavigationComponent implements OnInit {
-  adminDetail = {};
-  userDetail = {};
+export class NavigationComponent implements OnInit
+{
+  adminDetail:string="";
+  userDetail:string="";
   constructor(private library: LibraryService) { }
 
   ngOnInit(): void 
   {
     // to pass admin data
     this.library.adminDetail.subscribe(
-      (adminData) => {
+      (adminData:{adminId?:string,adminName:string}) =>
+      {
         console.log(adminData);
-        
-        this.adminDetail = adminData;
+        this.adminDetail = adminData.adminName;
       }
     );
     // to pass user data
-    this.library.userData.subscribe(
-      (loginData: LoginSchema) => {
-        this.userDetail = loginData
-      }
-    );
+    this.library.userData.subscribe((loginData: LoginSchema) => 
+    {
+      console.log(loginData);
+      
+      this.userDetail = loginData.loginName;
+    })
   }
 
 

@@ -14,46 +14,33 @@ export class RequestbookComponent implements OnInit
 {
   constructor(private library: LibraryService, private book: BookService) { }
   requests: RequestBookSchema[];
-  errorMsg:{};
+  errorMsg: {};
   adminToken: string;
-  loginData: LoginSchema;
+  loginData: string;
 
   ngOnInit(): void
   {
     if (localStorage.getItem('adminToken'))
     {
       this.adminToken = localStorage.getItem('adminToken');
-      this.book.getRequestBooksForAdmin().subscribe({
-        next: (res: RequestBookSchema[]) =>
+      this.book.getRequestBooksForAdmin().subscribe(
         {
-          this.requests = res;
-        },
-        error:(err:HttpErrorResponse)=>
-        {
-          this.errorMsg=err;
-        }
-      });
+          next: (res: RequestBookSchema[]) => this.requests = res
+          , error: (err: HttpErrorResponse) => this.errorMsg = err
+        });
     }
+    console.log(this.library.loginData);
 
     // receiving loging data as soon as user logs in
-    if (this.library.loginData)
+    if (localStorage.getItem('jwt'))
     {
-      this.loginData=this.library.loginData;
+      this.loginData = localStorage.getItem('userId');
       this.book
-        .getRequestBooksForUser(this.library.loginData.loginId)
+        .getRequestBooksForUser(this.loginData)
         .subscribe(
           {
-            next: (res: RequestBookSchema[]) =>
-            {
-              this.requests = res;
-              console.log(this.requests);
-            },
-            error:(err:HttpErrorResponse)=>
-            {
-              this.errorMsg=err;
-              console.log(this.errorMsg);
-              
-            }
+            next: (res: RequestBookSchema[]) => this.requests = res
+            , error: (err: HttpErrorResponse) => this.errorMsg = err
           });
     }
   }

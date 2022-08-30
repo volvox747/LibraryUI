@@ -77,21 +77,6 @@ export class LoginPageComponent implements OnInit
         }
       }
     )
-
-    // try
-    // {
-    //   if (this.library.admin(data.value))
-    //   {
-    //     localStorage.setItem('adminToken',JSON.stringify(data.value));
-    //     return this.router.navigate(['/books'])
-    //   }
-    //   throw new Error("Passowrd")
-    // }
-    // catch (error)
-    // {
-    //   this.errorFlag = true
-    // }
-
   }
 
 }
