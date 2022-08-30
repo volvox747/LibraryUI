@@ -10,7 +10,9 @@ import { RequestBookSchema } from './models/requestbook.model';
 })
 export class BookService
 {
+  // do get the bookdetails from getBook API
   books: BookSchema[];
+  // to pass the state from books component to book-details component
   bookDetails = new Subject<BookSchema>();
   constructor(private http: HttpClient) { }
 
@@ -22,7 +24,7 @@ export class BookService
       .pipe(map((res:BookSchema[]) => (this.books = res))
       ,catchError((err:HttpErrorResponse) => throwError(() => err)));
   }
-
+  // Get requested books for admin account
   getRequestBooksForAdmin()
   {
     return this.http
@@ -30,6 +32,7 @@ export class BookService
       .pipe(catchError((err) => throwError(() => err)));
   }
 
+  // Get requested books for user account
   getRequestBooksForUser(loginId: string)
   {
     return this.http
@@ -40,7 +43,6 @@ export class BookService
   }
 
   // post the request of book along with loginId and get requested msg
-
   postrequestBook(requestData: RequestSchema)
   {
     return this.http
@@ -49,7 +51,6 @@ export class BookService
   }
 
   // add a new book into the database
-
   postAddBook(bookData: BookSchema)
   {
     return this.http
