@@ -37,6 +37,7 @@ export class LoginPageComponent implements OnInit
           this.library.userData.next(res);
           const token: string = res.token.token
           localStorage.setItem('jwt', token); // set to local storage
+          localStorage.setItem('userId',res.loginId)
           this.router.navigate(['/books']);
         },
         error: (error: HttpErrorResponse) => 
@@ -65,6 +66,7 @@ export class LoginPageComponent implements OnInit
           this.adminErrorFlag = false
           const token: string = res.token.token
           localStorage.setItem('adminToken', token); // set to local storage
+          localStorage.setItem('adminId',res.adminId)
           this.library.adminDetail.next(res)
           this.router.navigate(['/books']);
         },
